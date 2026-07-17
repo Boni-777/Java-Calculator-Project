@@ -1,18 +1,8 @@
-package calculator.operations;
-
-//ScientificCalculator.java
-// extends Calculator and provides scientific operations and inherits all basic operations from Calculator.
-
 public class ScientificCalculator extends Calculator {
 
-    /*
-      Calculates the factorial of a non-negative integer
-     parameter: number integer >= 0
-     returns factorial value
-     */
-    public long factorial(int number) {
-
-        if (number < 0) {
+    // Calculates the factorial of a non-negative integer
+     public long factorial(int number) {
+         if (number < 0) {
             throw new IllegalArgumentException(
                     "Factorial is only defined for non-negative integers.");
         }
@@ -26,11 +16,7 @@ public class ScientificCalculator extends Calculator {
         return result;
     }
 
-    /*
-      Calculates base-10 logarithm.
-      parameter numbers: positive number
-      returns log10(number)
-     */
+    //Calculates base-10 logarithm
     public double log10(double number) {
 
         if (number <= 0) {
@@ -41,12 +27,8 @@ public class ScientificCalculator extends Calculator {
         return Math.log10(number);
     }
 
-    /*
-     Calculates natural logarithm (ln)
-     parameter number: positive number
-     returns natural logarithm
-     */
-    public double naturalLog(double number) {
+    //Calculates natural logarithm (ln)
+     public double naturalLog(double number) {
 
         if (number <= 0) {
             throw new IllegalArgumentException(
@@ -56,37 +38,22 @@ public class ScientificCalculator extends Calculator {
         return Math.log(number);
     }
 
-    /*
-     Calculates sine
-     Input is in degrees
-     */
+    //Calculates sine using degrees
     public double sin(double angle) {
         return Math.sin(Math.toRadians(angle));
     }
 
-    /*
-      Calculates cosine
-      Input is in degrees
-     */
+    //Calculates cosine using degrees
     public double cos(double angle) {
         return Math.cos(Math.toRadians(angle));
     }
 
-    /*
-      Calculates tangent
-      Input is in degrees
-     */
+    //Calculates tangent using degrees
     public double tan(double angle) {
+        //Normalize andle to the range [0,180)
+        double normalized = ((angle % 180) + 180) % 180;
 
-        /*
-         Prevent undefined values such as:
-          tan(90)
-          tan(270)
-          tan(450)
-         */
-
-        double normalized = angle % 180;
-
+        //Tangent is undefined at 90°, 270°, -90°, etc
         if (Math.abs(normalized - 90) < 1e-10) {
             throw new ArithmeticException(
                     "Tangent is undefined at " + angle + " degrees.");
