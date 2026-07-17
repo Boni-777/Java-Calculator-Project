@@ -1,10 +1,4 @@
-package calculator;
-
 import java.util.Scanner;
-
-import calculator.operations.ScientificCalculator;
-import calculator.history.HistoryManager;
-import calculator.utils.InputValidator;
 
 public class Main {
 
@@ -279,10 +273,12 @@ public class Main {
 
                     System.out.println("Invalid choice.");
             }
+        } catch (ArithmeticException | IllegalArgumentException e) {
 
-        } while (choice != 19);
+                System.out.println("\nError: " + e.getMessage());
+        }
+    } while (choice != 19);
 
-        input.close();
-
-    }
+    input.close();
+  }
 }
