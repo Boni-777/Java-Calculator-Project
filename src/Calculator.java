@@ -1,5 +1,3 @@
-package calculator.operations;
-
 public class Calculator {
 
   //Adds two numbers
@@ -26,7 +24,7 @@ public class Calculator {
     
     public double divide(double num1, double num2) {
 
-        if (num2 == 0) {
+        if (Math.abs(num2) < 1e-10) {
             throw new ArithmeticException("Division by zero is not allowed.");
         }
 
@@ -37,7 +35,7 @@ public class Calculator {
     
     public double modulus(double num1, double num2) {
 
-        if (num2 == 0) {
+        if (Math.abs(num2) < 1e-10) {
             throw new ArithmeticException("Cannot perform modulus by zero.");
         }
 
